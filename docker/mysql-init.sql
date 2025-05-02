@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS api;
+
+CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
+GRANT ALL PRIVILEGES ON api.* TO 'user'@'%';
+FLUSH PRIVILEGES;

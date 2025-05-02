@@ -14,9 +14,16 @@ RUN apt-get update && apt-get install -y \
     curl \
     ca-certificates \
     git \
+    libpng-dev \
+    libjpeg-dev \
+    libonig-dev \
+    libzip-dev \
+    libxml2-dev \
+    libmariadb-dev \
     --no-install-recommends && \
+    docker-php-ext-install pdo pdo_mysql && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

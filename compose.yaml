@@ -9,3 +9,24 @@ services:
     volumes:
       - ./api:/var/www/html/WebRoot:rw,z
     user: "${UID:-1000}:${GID:-1000}"
+    env_file: ".env"
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: db
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./docker/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  mysqldata:
