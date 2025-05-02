@@ -7,4 +7,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./api:/var/www/html/WebRoot:rw
+      - ./api:/var/www/html/WebRoot:rw,z
+    user: "${UID:-1000}:${GID:-1000}"

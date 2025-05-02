@@ -6,9 +6,9 @@ YIIC="$WEBROOT/vendor/yiisoft/yii/framework/yiic.php"
 
 cd "$WEBROOT"
 
-if [ ! -f "$COMPOSER_JSON" ]; then
+if [ ! -f "composer.json" ]; then
   echo "➡️ Creating composer.json..."
-  cat <<EOF > "$COMPOSER_JSON"
+  cat <<EOF > "composer.json"
 {
     "require": {
         "yiisoft/yii": "1.1.22"
@@ -17,7 +17,7 @@ if [ ! -f "$COMPOSER_JSON" ]; then
 EOF
 
   echo "➡️ Installing composer deps..."
-  cd /var/www/html/WebRoot && composer install --no-interaction --prefer-dist
+  composer install --no-interaction --prefer-dist
 fi
 
 if [ ! -d "$SRC_DIR" ]; then
@@ -26,3 +26,10 @@ if [ ! -d "$SRC_DIR" ]; then
   echo "✅ Created at $SRC_DIR"
 fi
 
+echo "🛠 Checking permissions..."
+if [ -w "$WEBROOT" ]; then
+  echo "✅ Permissions OK at $WEBROOT"
+else
+  echo "❌ Permission issue at $WEBROOT. Ensure the host directory has correct UID/GID."
+  exit 1
+fi
