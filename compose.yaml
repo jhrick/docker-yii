@@ -1,0 +1,10 @@
+services:
+  server:
+    container_name: yii
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./api:/var/www/html/WebRoot:rw
