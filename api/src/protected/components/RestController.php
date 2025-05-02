@@ -14,7 +14,7 @@ class RestController extends CController {
 		$this->response = [
 			'success' => true,
 			'data' => null,
-			'errors' => null,
+			'errors' => [],
 		];
 		return parent::beforeAction($action);
 	}
@@ -43,8 +43,8 @@ class RestController extends CController {
 		if (!is_array($errors)) {
 			$errors = [$errors];
 		}
-		$this->reponse['success'] = false;
-		$this->response['errors'] = array_merge($this->reponse['errors'], $errors);
+		$this->response['success'] = false;
+		$this->response['errors'] = array_merge($this->response['errors'], $errors);
 	}
 
 	/**
