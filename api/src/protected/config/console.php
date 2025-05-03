@@ -1,24 +1,24 @@
 <?php
 
-return array(
-	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Console Application',
+return [
+	'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
+	'name' => 'My Console Application',
 
-	'preload'=>array('log'),
+	'preload' => ['log'],
 
-	'components'=>array(
+	'components' => [
 
-		'db'=>require(dirname(__FILE__).'/database.php'),
+		'db' => require dirname(__FILE__) . '/database.php',
 
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-			),
-		),
+		'log' => [
+			'class' => 'CLogRouter',
+			'routes' => [
+				[
+					'class' => 'CFileLogRoute',
+					'levels' => 'error, warning',
+				],
+			],
+		],
 
-	),
-);
+	],
+];
