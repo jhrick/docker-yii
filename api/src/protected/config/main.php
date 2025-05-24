@@ -47,9 +47,9 @@ return [
 					'class' => 'CFileLogRoute',
 					'levels' => 'error, warning',
 				],
-				[
+				/*[
 					'class'=>'CWebLogRoute',
-				],
+				],*/
 			],
 		],
 
